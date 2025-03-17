@@ -8,14 +8,14 @@ export const authOptions: NextAuthOptions = {
     Credentials({
       name: 'Credentials',
       credentials: {
-        email: { label: 'Employee ID', type: 'string' },
+        username: { label: 'Username', type: 'string' },
         password: { label: 'Password', type: 'password' }
       },
       authorize: async (credentials) => {
         try {
-          if (!credentials?.email || !credentials?.password) throw new Error('Email and password are required')
+          if (!credentials?.username || !credentials?.password) throw new Error('Username and password are required')
 
-          const response = await login(credentials.email, credentials.password)
+          const response = await login(credentials.username, credentials.password)
 
           const { success, data } = response.data
 
@@ -23,8 +23,11 @@ export const authOptions: NextAuthOptions = {
 
           return {
             id: data.user.id,
-            name: data.user.name,
-            email: data.user.email,
+            username: data.user.username,
+            full_name: data.user.full_name,
+            branch_code: data.user.branch_code,
+            role: data.user.role,
+            branch_name: data.user.branch_name,
             accessToken: data.access_token.token,
             refreshToken: data.refresh_token.token,
             accessTokenExpires: Date.now() + data.access_token.expires_in * 1000 // Expiry in ms
@@ -43,6 +46,12 @@ export const authOptions: NextAuthOptions = {
         // First-time login: Store tokens in JWT
         return {
           ...token,
+          id: user.id,
+          username: user.username,
+          full_name: user.full_name,
+          branch_code: user.branch_code,
+          role: user.role,
+          branch_name: user.branch_name,
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,
           accessTokenExpires: user.accessTokenExpires
@@ -94,6 +103,12 @@ async function refreshToken(token: any) {
 
     return {
       ...token,
+      id: data.user.id,
+      username: data.user.username,
+      full_name: data.user.full_name,
+      branch_code: data.user.branch_code,
+      role: data.user.role,
+      branch_name: data.user.branch_name,
       accessToken: data.access_token.token,
       accessTokenExpires: Date.now() + data.access_token.expires_in * 1000, // New expiry time
       refreshToken: data.refresh_token.token || token.refreshToken // Use new refresh token if provided

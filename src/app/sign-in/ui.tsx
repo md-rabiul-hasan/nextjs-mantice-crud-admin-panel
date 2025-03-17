@@ -10,10 +10,10 @@ import { useRouter } from 'next/navigation'
 
 import { BiErrorCircle as ErrorIcon } from 'react-icons/bi'
 import { CgPassword as PasswordIcon, CgLogIn as SignInIcon } from 'react-icons/cg'
-import { MdEmail } from "react-icons/md"
 
 import { signInSchema } from '@schemas/auth.schema'
 import { SignInValues } from '@types'
+import { FaUserTie } from "react-icons/fa"
 import classes from './styles.module.css'
 
 const SignInUI = () => {
@@ -23,7 +23,7 @@ const SignInUI = () => {
   const { onSubmit, getInputProps } = useForm<SignInValues>({
     validate: yupResolver(signInSchema),
     initialValues: {
-      email: undefined,
+      username: undefined,
       password: ''
     }
   })
@@ -79,13 +79,12 @@ const SignInUI = () => {
             </Text>
 
             <TextInput
-              label="Email"
+              label="Username"
               c="gray.3"
               leftSectionPointerEvents="none"
-              leftSection={<MdEmail />}
-              label="Your email"
-              placeholder="Your email"
-              {...getInputProps('email')}
+              leftSection={<FaUserTie />} // Use an appropriate icon for username
+              placeholder="Enter your username"
+              {...getInputProps('username')}
             />
 
 

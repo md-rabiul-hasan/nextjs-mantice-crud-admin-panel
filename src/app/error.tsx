@@ -1,10 +1,11 @@
 'use client'
 
-import ErrorMsg from '@components/common/error-msg'
-import { Button, Container, Group } from '@mantine/core'
 import Link from 'next/link'
+import { Button, Container, Group } from '@mantine/core'
 import { BiReset as ResetIcon } from 'react-icons/bi'
 import { TiArrowBack as BackIcon } from 'react-icons/ti'
+
+import ErrorMsg from '@components/common/error-msg'
 
 type Props = {
   error: Error

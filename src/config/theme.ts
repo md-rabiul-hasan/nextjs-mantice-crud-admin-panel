@@ -1,7 +1,7 @@
 import { createTheme } from '@mantine/core'
 
 export const theme = createTheme({
-  defaultGradient: { from: '#C93D76', to: '#8D2C8B', deg: 60 },
+  defaultGradient: { from: '#4B6CB7', to: '#182848', deg: 60 },
   defaultRadius: 'md',
   cursorType: 'pointer',
   autoContrast: true,
@@ -12,16 +12,16 @@ export const theme = createTheme({
 
   colors: {
     brand: [
-      '#F0E5F2',
-      '#D9BFDE',
-      '#C094C8',
-      '#A769B1',
-      '#9449A1',
-      '#812990',
-      '#792488',
-      '#6E1F7D',
-      '#641973',
-      '#510F61'
+      '#edf2ff',
+      '#dbe4ff',
+      '#bac8ff',
+      '#91a7ff',
+      '#748ffc',
+      '#5c7cfa',
+      '#4c6ef5',
+      '#4263eb',
+      '#3b5bdb',
+      '#364fc7'
     ]
   },
 

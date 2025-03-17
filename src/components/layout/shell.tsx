@@ -43,7 +43,7 @@ const StructureShell = ({ children }: { children: ReactNode }) => {
 
       <AppShell.Main>
         <Text pos="fixed" bottom="1rem" right="1rem" c="dimmed" size="sm" style={{ zIndex: 100 }}>
-          Note: This app is currently in preview mode. You can enjoy paperless requisition system soon.
+          Note: This is the utility next version. You can only take BREB Bill & Miscellaneous Charges.
         </Text>
         {children}
       </AppShell.Main>

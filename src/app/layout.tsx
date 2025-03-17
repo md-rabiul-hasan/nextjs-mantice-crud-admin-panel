@@ -28,16 +28,16 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://connect-pro.sbacbank.com'),
+  metadataBase: new URL('https://utility-next.sbacbank.com'),
   title: {
-    default: 'SBAC ConnectPro - Streamlining Branch Operations',
-    template: '%s - SBAC ConnectPro'
+    default: 'SBAC UtilityNext - Utility Next Version',
+    template: '%s - SBAC UtilityNext'
   },
   description:
-    "Streamline your requisition process with SBAC ConnectPro. This intuitive application serves as a centralized hub for branch employees' requisitions. From IT to other Head Office divisions, manage, review, approve or reject requests swiftly and efficiently, ensuring smooth operations across all branches.",
-  authors: [{ name: 'Jobayer Al Mahmud Ahad', url: 'https://www.jobayerahad.com' }],
+    "Simplify your utility bill collection process with SBAC UtilityNext. This user-friendly application serves as a centralized platform for managing utility bill payments. From electricity to water and other services, track, manage, and process payments efficiently, ensuring seamless operations for both customers and service providers.",
+  authors: [{ name: 'Md.Rabiul Hasan', url: 'https://github.com/md-rabiul-hasan' }],
   publisher: 'SBAC Bank PLC'
-}
+};
 
 type Props = {
   children: ReactNode

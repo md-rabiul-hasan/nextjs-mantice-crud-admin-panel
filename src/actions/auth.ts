@@ -2,9 +2,9 @@
 
 import { apiBaseUrl } from '@utils/api';
 
-export const login = async (email?: string, password?: string) => {
+export const login = async (username?: string, password?: string) => {
   return await apiBaseUrl.post(`/auth/login`, {
-    email,
+    username,
     password
   });
 }

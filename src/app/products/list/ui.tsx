@@ -11,7 +11,9 @@ import TableNav from '@components/common/table-nav';
 import TitleBar from '@components/common/title-bar';
 import useNavigation from '@hooks/useNavigation';
 import { openConfirmModal } from '@mantine/modals';
+import { showNotification } from '@mantine/notifications';
 import { ProductType, TPaginatedRes } from '@types';
+import { getErrorMessage, getSuccessMessage } from '@utils/notification';
 import { IoMdAdd as AddIcon, IoIosMore as MoreIcon } from 'react-icons/io';
 import EditProduct from './edit';
 
@@ -54,8 +56,19 @@ const ProductListUi = ({ data: { data, pagination } }: Props) => {
     children: <Text size="sm">Do you really want to delete this product?</Text>,
     centered: true,
     labels: { confirm: 'Delete', cancel: 'Cancel' },
-    onConfirm: async () => await deleteProduct(id)
-  })
+    onConfirm: async () => {
+      try {
+        const res = await deleteProduct(id);
+        if (res?.success) {
+          showNotification(getSuccessMessage(res?.message)); // Show success notification
+        } else {
+          showNotification(getErrorMessage(res?.message)); // Show error notification if deletion fails
+        }
+      } catch (error) {
+        showNotification(getErrorMessage("Failed to delete product!")); // Handle exceptions
+      }
+    }
+  });
 
   // Update the search query in URL whenever `search` changes
   useEffect(() => {

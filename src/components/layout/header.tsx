@@ -13,7 +13,6 @@ import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { AiOutlineUser as ProfileIcon } from 'react-icons/ai'
 import { BsMoon as DarkIcon, BsSunFill as LightIcon } from 'react-icons/bs'
 import { FiHelpCircle as HelpIcon } from 'react-icons/fi'
 import { IoIosArrowDown as DownArrow } from 'react-icons/io'
@@ -21,6 +20,7 @@ import { MdLogout as LogoutIcon } from 'react-icons/md'
 
 const AppHeader = () => {
   const { status, data: session } = useSession()
+  console.log(session);
   const pathname = usePathname()
   const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true })
   const { setColorScheme } = useMantineColorScheme()
@@ -53,12 +53,12 @@ const AppHeader = () => {
           <Menu.Target>
             {status === 'authenticated' ? (
               <Group className="profile-menu" gap="xs">
-                <Avatar src={session.user.avatar} alt={session.user.name} />
+                <Avatar src={session.user.avatar} alt={session.user.fullname} />
 
                 <div>
-                  <Text>{session.user.name}</Text>
+                  <Text>{session.user.full_name}</Text>
                   <Text c="dimmed" size="xs">
-                    {`${session.user.email}`}
+                    {`${session.user.branch_name} (${session.user.role})`}
                   </Text>
                 </div>
 
@@ -77,13 +77,6 @@ const AppHeader = () => {
           </Menu.Target>
 
           <Menu.Dropdown>
-            <Menu.Item component={Link} href="/profile">
-              <Group gap="xs">
-                <ProfileIcon size={14} />
-                <Text>Profile</Text>
-              </Group>
-            </Menu.Item>
-
             <Menu.Item onClick={() => signOut()} leftSection={<LogoutIcon />}>
               Logout
             </Menu.Item>

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { AiOutlineDashboard as DashboardIcon } from 'react-icons/ai';
 import { FaProductHunt } from "react-icons/fa";
+import { TbCoinTakaFilled } from "react-icons/tb";
 
 type MenuItem = {
   link: string
@@ -23,6 +24,14 @@ type MenuItems = MenuItem | MenuWithLinks
 
 export const menuItems = (roles: string[]) => [
   { link: '/', label: 'Dashboard', icon: <DashboardIcon /> },
+  {
+    label: 'Miscellaneous Charges',
+    icon: <TbCoinTakaFilled />,
+    links: [
+      { link: '/charges/entry', label: 'Charge Entry' },
+      { link: '/charges/authorize', label: 'Charge Authorize' },
+    ]
+  },
   {
     label: 'Product',
     icon: <FaProductHunt />,
